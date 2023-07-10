@@ -95,13 +95,6 @@ ptr getProperty (Class *class, char *name) {
     return NULL;
 }
 
-char* concat (char *a, char *b) {
-    char *result = calloc(strlen(a) + strlen(b) + 1, sizeof(char));
-    strcpy(result, a);
-    strcat(result, b);
-    return result;
-}
-
 void copyList (List *list, List *copy) {
     Node *node = list->head;
     while (node != NULL) {

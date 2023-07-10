@@ -41,16 +41,15 @@ ptr call (Class *class, char *name, List* args);
 void setProperty (Class *class, char *name, ptr value);
 ptr getProperty (Class *class, char *name);
 
-char* concat (char *a, char *b);
 void copyList (List *list, List *copy);
 Class* new (Class* class, char *name);
 
 #define BEGIN                   List* ARGS = newList()
 #define END                     free(ARGS)
 #define CLASS(name)             Class*name = newClass(#name)
-#define CALL(name)              *call(SELF, #name, ARGS)
+#define CALL(class, name)       *call(class, #name, ARGS)
 #define PROPERTY(name)          property(SELF, #name)
 #define METHOD(name)            method(SELF, #name, name)
-#define SET(name, value)        setProperty(SELF, #name, (ptr) value)
-#define GET(name)               *getProperty(SELF, #name)
+#define SET(class, name, value) setProperty(class, #name, (ptr) value)
+#define GET(class, name)        *getProperty(class, #name)
 #define EXTEND(class, obj)      Class* obj = new(class, #obj)
