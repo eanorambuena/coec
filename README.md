@@ -30,7 +30,7 @@ int main () {
         method sayHi;
         method add;
     
-    int Person.age = 17 + 40;
+    int Person.age = 52;
     Person.CALL(sayHi);
 
     int a = 1;
@@ -49,6 +49,9 @@ int main () {
 
     printf("Student.grade: %d\n", Student.GET(grade));
     printf("Student.age: %d\n", Student.GET(age));
+
+    freeClass(Person);
+    freeClass(Student);
 
     return 0;
 }
@@ -104,6 +107,9 @@ int main () {
         printf("%s.grade: %d\n", SELF->name, GET(SELF, grade));
         printf("%s.age: %d\n", SELF->name, GET(SELF, age));
         #undef SELF
+
+    freeClass(Person);
+    freeClass(Student);
 
     END;
     return 0;

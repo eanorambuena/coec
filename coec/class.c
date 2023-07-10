@@ -112,3 +112,9 @@ Class* new (Class* class, char *name) {
     copyList(class->methods, object->methods);
     return object;
 }
+
+void freeClass (Class *class) {
+    freeList(class->properties);
+    freeList(class->methods);
+    free(class);
+}

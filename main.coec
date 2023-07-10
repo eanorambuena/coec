@@ -33,5 +33,8 @@ int main () {
     printf("Student.grade: %d\n", Student.GET(grade));
     printf("Student.age: %d\n", Student.GET(age));
 
+    freeClass(Person);
+    freeClass(Student);
+
     return 0;
 }

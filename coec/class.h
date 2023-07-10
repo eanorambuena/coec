@@ -43,6 +43,7 @@ ptr getProperty (Class *class, char *name);
 
 void copyList (List *list, List *copy);
 Class* new (Class* class, char *name);
+void freeClass (Class *class);
 
 #define BEGIN                   List* ARGS = newList()
 #define END                     free(ARGS)

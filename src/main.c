@@ -43,6 +43,7 @@ ptr getProperty (Class *class, char *name);
 
 void copyList (List *list, List *copy);
 Class* new (Class* class, char *name);
+void freeClass (Class *class);
 
 #define BEGIN                   List* ARGS = newList()
 #define END                     free(ARGS)
@@ -167,6 +168,11 @@ Class* new (Class* class, char *name) {
     return object;
 }
 
+void freeClass (Class *class) {
+    freeList(class->properties);
+    freeList(class->methods);
+    free(class);
+}
 ptr sayHi (List* args){BEGIN;
 printf("Hi!\n");
 int* RETURN = calloc(1, sizeof(int));END;YIELD;
@@ -205,6 +211,9 @@ int_Student_age =  18;SET(Student,age,&int_Student_age);
 
 printf("Student.grade: %d\n", GET(Student,grade));
 printf("Student.age: %d\n", GET(Student,age));
+
+freeClass(Person);
+freeClass(Student);
 
 END;return 0;
 }
