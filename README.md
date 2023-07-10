@@ -1,4 +1,60 @@
-## Vamilla C
+# Coec
+
+## Usage (with gcc)
+    
+``` r
+python3 -m coec <input file> <output file> [executable file] [options]
+```
+
+### Options
+
+- `-h` or `--help`: Show help message **coming soon**
+- `-v` or `--version`: Show version **coming soon**
+- `-e` or `--execute`: Execute the output file after compiling
+
+## Example
+
+``` c
+ptr sayHi (List* args) {
+    printf("Hi!\n");
+    yield;
+}
+
+ptr add (List* args) {
+    yield *(int*) args->head->data + *(int*) args->head->next->data;
+}
+
+int main () {
+    class Person:
+        property age;
+        method sayHi;
+        method add;
+    
+    int Person.age = 17 + 40;
+    Person.CALL(sayHi);
+
+    int a = 1;
+    int b = 6;
+    ARG(a);
+    ARG(b);
+    printf("Person.add(1, 6): %d\n", Person.CALL(add));
+    printf("Person.age: %d\n", Person.GET(age));
+
+    class Student (Person):
+        property grade;
+
+    int Student.grade = 12;
+    int Student.age = 17;
+    !int Student.age = 18;
+
+    printf("Student.grade: %d\n", Student.GET(grade));
+    printf("Student.age: %d\n", Student.GET(age));
+
+    return 0;
+}
+```
+
+## You can also use it on vanilla C
 
 ``` c
 #include "class.h"
